@@ -1,0 +1,61 @@
+@import 'variable.scss';
+@import '_buttons.scss';
+
+body {
+    margin: 0;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.tw-navbar {
+    position: sticky;
+    height: $herard-navbar-height;
+    background-color: $color-whrite;
+    border: 1px solid $color-deep-grey;
+    z-index: 1000;
+}
+.fluid {
+    padding: 0 15px;
+}
+.container {
+    width: 100%;
+    position: relative;
+    margin: 0 -15px;
+    .sidebar {
+        display: block;
+        position: sticky;
+        background-color: $color-light-black;
+        z-index: 1001;
+        height: 100vh;
+        flex: 0 0 15%;
+        max-width: 15%;
+        ul li a{
+            text-decoration: none;
+            color: $color-whrite;
+            &:hover{
+                background-color: $color-light-blue;
+            }
+            i {
+                margin-right: 20px;
+                margin-left: 25px
+            }
+        }
+    }
+    .content {
+        flex: 0 0 85%;
+        max-width: 85%;
+        margin: 15px;
+        .view-card{
+            .icon {
+                opacity: 0.2;
+            }
+        }
+    }
+    
+}
+.col-3 {
+    flex: 0 0 33.333333%
+}

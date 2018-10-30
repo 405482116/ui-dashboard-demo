@@ -1,0 +1,24 @@
+{
+  "name": "thoght-works-home-work",
+  "version": "1.0.0",
+  "description": "Thoght works home work",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "home",
+    "works"
+  ],
+  "author": "Jason",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "express": "^4.16.4",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.2",
+    "hbs": "^4.0.1",
+    "jade": "^1.11.0",
+    "path": "^0.12.7"
+  }
+}
