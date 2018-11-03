@@ -1,0 +1,5 @@
+./dist
+./design
+./node_modules
+./assets
+./package-lock.json
