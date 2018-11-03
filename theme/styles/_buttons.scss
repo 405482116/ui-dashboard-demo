@@ -3,14 +3,27 @@
     padding: 5px;
     border: transparent;
     background-color: $color-bule;
+    cursor: pointer;
     &-whrite {
         background-color: $color-whrite;
     }
     &-light-gray {
         background-color: $color-light-gray;
+        &:active {
+            background-color: $color-deep-gray;
+        }
     }
     >i {
         margin-left: 5px;
+    }
+    &-deny {
+        color: $color-whrite;
+        >i {
+            margin-right: 5px;
+        }
+        &:active {
+            background-color: $color-deep-blue;
+        }
     }
 }
 

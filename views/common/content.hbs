@@ -1,1 +1,54 @@
-<h1>content</h1>
+<div class="table-container">
+    <div class="table-header">
+        <div class="flex-row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div><i class="icon-desktop font-16"></i></div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">2</div>
+            <div class="col-lg-4 col-md-4 col-sm-12">3</div>
+        </div>
+    </div>
+
+    <div class="table-body">
+        {{#each table}}
+        <div class="{{type}}">
+            <div class="table-row">
+                <div class="flex-row top flex-row-middle">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="title">
+                            <i class="icon-desktop font-16"></i><span>{{title}}</span><span class="badges">{{type}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="info">
+                            <i class="icon-info font-16"></i><span>{{info}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="folder">
+                            <i class="icon-folder font-16"></i><span>{{folder}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-row bottom flex-row-middle">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="flex-row flex-row-middle flex-row-between">
+                            <div class="add-tool"><i class="icon-plus font-18"></i></div>
+                            {{#each browserList}}
+                            <div class="delete-tool">
+                                <button type="button" class="btn btn-light-gray">
+                                    <span>{{name}}</span><i class="icon-trash font-16"></i>
+                                </button>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 row-right">
+                        <div class="deny-tool"><button type="button" class="btn btn-deny"><i class="icon-deny"></i><span>Deny</span></button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
