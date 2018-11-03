@@ -1,0 +1,62 @@
+@function grid-width ($size) {
+    @return percentage($size/ 12); //12 column width
+}
+
+@mixin flex-block ($size) {
+    flex: 0 0 grid-width($size);
+    max-width: grid-width($size);
+    position: relative;
+    min-height: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+/* generate 12 column */
+
+@mixin generate-col ($class-name, $size) {
+    @if $class-name==null {
+        .col-#{$size} {
+            @include flex-block ($size)
+        }
+    }
+    @else {
+        .col-#{$class-name}-#{$size} {
+            @include flex-block ($size)
+        }
+    }
+}
+
+@mixin mk-col ($screen) {
+    @for $i from 1 through 12 {
+        @include generate-col($screen, $i);
+    }
+}
+
+/* flex justify property*/
+
+@mixin generate-justify($flex) {
+    @each $align,
+    $value in (left, flex-start),
+    (center, center),
+    (right, flex-end),
+    (between, space-between) {
+        .flex-#{$flex}-#{$align} {
+            justify-content: $value;
+        }
+    }
+}
+
+/* flex align property*/
+
+@mixin generate-align($flex) {
+    @each $align,
+    $value in (top, flex-start),
+    (middle, center),
+    (bottom, flex-end),
+    (baseline, baseline) {
+        .flex-#{$flex}-#{$align} {
+            align-items: $value;
+        }
+    }
+}

@@ -32,7 +32,7 @@ gulp.task('build:styles', () => {
     return gulp.src('theme/main.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-        .pipe(cssnano())
+        // .pipe(cssnano())
         .pipe(rename(path => { path.basename += '.min'; }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(stylesOutput));

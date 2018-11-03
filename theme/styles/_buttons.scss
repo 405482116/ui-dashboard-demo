@@ -1,3 +1,36 @@
 .btn {
+    position: relative;
+    padding: 5px;
+    border: transparent;
     background-color: $color-bule;
+    &-whrite {
+        background-color: $color-whrite;
+    }
+    &-light-gray {
+        background-color: $color-light-gray;
+    }
+    >i {
+        margin-left: 5px;
+    }
+}
+
+.btn-group {
+    position: relative;
+    .btn {
+        height: 50px;
+        padding: 0;
+        border-right: 1px solid $color-light-gray;
+        &:hover,
+        &:active {
+            &:before {
+                content: '';
+                border-top: 5px solid $color-light-blue;
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+            }
+        }
+    }
 }

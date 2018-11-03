@@ -2,10 +2,11 @@ const express = require('express');
 const path = require('path');
 const indexRouter = require('./routes/index');
 const dashboradRouter = require('./routes/dashborad');
+const hbs = require('hbs');
 
 const app = express();
 
-
+hbs.registerPartials(__dirname + '/views/common');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

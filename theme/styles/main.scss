@@ -1,0 +1,133 @@
+@import '_variable.scss';
+@import '_mixin.scss';
+@import '_fonts.scss';
+@import '_buttons.scss';
+@import '_badges.scss';
+@import '_layout.scss';
+@for $i from 1 through 12 {
+    @include generate-col(null, $i);
+}
+
+// @media screen and (min-width: $screen-desktop-min) {}
+@media screen and (min-width: $screen-desktop-min) {
+    @include mk-col(lg);
+    .top-navbar {
+        &-toggler {
+            .btn {
+                display: none;
+            }
+        }
+    }
+    .content {
+        padding-left: $sidebar-navbar-width;
+    }
+}
+
+@media screen and (max-width: $screen-desktop-min) {
+    @include mk-col(md);
+    .container {
+        .sidebar {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: $screen-tablet-min) {
+    @include mk-col(md);
+    .container {
+        .sidebar {
+            display: none;
+        }
+        .table {
+            &-header {
+                flex-wrap: wrap-reverse;
+            }
+            &-row {
+                &:before {
+                    content: '';
+                    border-left: 5px solid $color-orange;
+                    display: inline-block;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+@each $flex,
+$direction in (row, row),
+(column, column) {
+    .flex-#{$flex} {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: $direction;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+}
+
+@each $var in (left, center, right) {
+    .row-#{$var} {
+        text-align: #{$var};
+    }
+}
+
+@each $name,
+$color in (building, $bg-building),
+(idle, $bg-idle) {
+    .bg-#{$name} {
+        background-color: #{$color};
+    }
+}
+
+@while $font-size-base>=12 {
+    .font-#{$font-size-base} {
+        font-size: $font-size-base +px;
+    }
+    $font-size-base: $font-size-base - 2;
+}
+
+body {
+    margin: 0;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+.logo {
+    background-image: url(../assets/icons/logo.svg);
+    background-repeat: no-repeat;
+    display: inherit;
+    background-size: contain;
+    min-width: 144px;
+    height: 50px;
+    background-position: center;
+}
+
+ul li {
+    list-style: none;
+}
+
+.sidebar {
+    ul {
+        padding: 0;
+        li {
+            >a {
+                padding: 0 20px; 
+                text-decoration: none;
+                color: $color-whrite;
+                height: 45px;
+                display: flex;
+                align-items: center;
+                &:hover {
+                    background-color: $color-light-blue;
+                }
+                i {
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}

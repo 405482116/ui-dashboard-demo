@@ -1,0 +1,30 @@
+.top-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color-whrite;
+    height: $top-navbar-height;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1001;
+    &-toggler {
+        border: transparent;
+        padding: 10px;
+        cursor: pointer;
+    }
+}
+.container{
+    height: calc(100vh - #{$top-navbar-height});
+    position: relative;
+}
+.sidebar {
+    position: fixed;
+    width: $sidebar-navbar-width;
+    top: $top-navbar-height;
+    background-color: $color-light-black;
+    height: 100%;
+    z-index: 1000;
+}
