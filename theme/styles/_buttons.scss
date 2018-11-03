@@ -29,10 +29,15 @@
 
 .btn-group {
     position: relative;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: $color-whrite;
     .btn {
         height: 50px;
         padding: 0;
         border-right: 1px solid $color-light-gray;
+        background-color: $color-whrite;
         &:hover,
         &:active {
             &:before {

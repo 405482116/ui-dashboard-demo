@@ -50,7 +50,22 @@
         }
         .table {
             &-header {
-                flex-wrap: wrap-reverse;
+                background-color: $color-page-color;
+                .utils-tool {
+                    margin-bottom: 15px;
+                }
+                .search-bar {
+                    width: 100%;
+                    input {
+                        width: 100%;
+                    }
+                }
+                .icon-bar {
+                    display: none;
+                }
+                .flex-row {
+                    flex-wrap: wrap-reverse;
+                }
             }
             &-row {
                 .badges {
@@ -148,8 +163,46 @@ ul li {
 }
 
 .table {
-    &-header {}
-    &-body {}
+    &-header {
+        background-color: $color-whrite;
+        .utils-tool {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: $color-whrite;
+            height: 50px;
+        }
+        .search-bar {
+            &:before {
+                content: '\f002';
+                font-family: 'cruise' !important;
+                speak: none;
+                opacity: 0.3;
+                position: absolute;
+                top: 15px;
+                left: 20px;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                /* Better Font Rendering =========== */
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            input {
+                padding: 10px 20px;
+            }
+        }
+        .icon-bar {
+            i {
+                margin-right: 20px;
+                &.active {
+                    color: $color-light-blue;
+                }
+            }
+        }
+    }
     &-row {
         background-color: $color-whrite;
         padding: 15px;
@@ -162,6 +215,7 @@ ul li {
         .title,
         .info,
         .folder {
+            margin: 5px 0;
             >i {
                 margin-right: 10px;
             }
