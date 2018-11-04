@@ -90,6 +90,13 @@
                 }
             }
         }
+        .card-container {
+            .overview {
+                .table {
+                    margin-top: 20px;
+                }
+            }
+        }
     }
 }
 
@@ -328,7 +335,32 @@ ul li {
         background-color: $bg-idle
     }
     .overview {
+        position: relative;
+        height: 100%;
         color: $color-light-black;
         background-color: $color-whrite;
+        .table {
+            display: table;
+            border-collapse: collapse;
+            min-width: 100%;
+            min-height: 100%;
+            &-tr {
+                display: table-row;
+                height: 30px;
+            }
+            &-th {
+                display: table-cell;
+                font-size: 1.2rem;
+                text-align: center;
+                vertical-align: middle;
+            }
+            &-td {
+                display: table-cell;
+                font-size: 2rem;
+                width: calc(100% / 3);
+                text-align: center;
+                vertical-align: middle;
+            }
+        }
     }
 }
