@@ -78,10 +78,10 @@
                     <div class="flex-row bottom flex-row-middle">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="flex-row flex-row-middle flex-row-between">
-                                <div class="add-tool"><i class="icon-plus font-18"></i></div>
+                                <div class="add-tool" onclick="addFn({{id}}, this)"><i class="icon-plus font-18"></i></div>
                                 {{#each browserList}}
                                 <div class="delete-tool">
-                                    <button type="button" class="btn btn-light-gray">
+                                    <button type="button" class="btn btn-light-gray" onclick="deleteFn({{../id}}, {{@index}})">
                                         <span>{{name}}</span><i class="icon-trash font-16"></i>
                                     </button>
                                 </div>

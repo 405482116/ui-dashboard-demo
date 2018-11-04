@@ -1,88 +1,30 @@
 const express = require('express');
 const router = express.Router();
+const context = require('../db/data');
 
-const context = {
-  title: "Demo",
-  menu: [{
-    "id": 0,
-    "label": "DASHBOARD",
-    "icon": "icon-dashboard",
-    "link": 'dashborad'
-  }, {
-    "id": 1,
-    "label": "AGENT",
-    "icon": "icon-sitemap"
-
-  }, {
-    "id": 2,
-    "label": "MY CRUSE",
-    "icon": "icon-boat"
-  }
-    , {
-    "id": 3,
-    "label": "HELP",
-    "icon": "icon-life-bouy"
-  }
-  ],
-  table: [{
-    class: 'windows',
-    type: 'idle',
-    title: 'test123.123123.com',
-    info: '192.168.1.102',
-    folder: '/var/lib/....',
-    isDeny: true,
-    browserList: [{ name: 'Filefox' }, { name: 'Safari' }, { name: 'Ubuntu' }, { name: 'Chrome' }]
-
-  }, {
-    class: 'windows',
-    type: 'building',
-    title: 'test123.123123.com',
-    info: '192.168.1.103',
-    folder: '/var/lib/....',
-    isDeny: false,
-    browserList: [{ name: 'Filefox' }, { name: 'Safari' }, { name: 'Ubuntu' }, { name: 'Chrome' }]
-
-  }, {
-    class: 'ubuntu',
-    type: 'building',
-    title: 'test123.11111.com',
-    info: '192.168.1.104',
-    folder: '/var/lib/....',
-    isDeny: false,
-    browserList: [{ name: 'Filefox' }, { name: 'Safari' }]
-
-  }, {
-    class: 'debin',
-    type: 'building',
-    title: 'test123.11111.com',
-    info: '192.168.1.105',
-    folder: '/var/lib/....',
-    isDeny: false,
-    browserList: [{ name: 'Filefox' }, { name: 'Safari' }]
-
-  }, {
-    class: 'suse',
-    type: 'idle',
-    title: 'test123.11111.com',
-    info: '192.168.1.107',
-    folder: '/var/lib/....',
-    isDeny: false,
-    browserList: []
-
-  }, {
-    class: 'cent_os',
-    type: 'idle',
-    title: 'test123.11111.com',
-    info: '192.168.1.107',
-    folder: '/var/lib/....',
-    isDeny: true,
-    browserList: [{ name: 'Filefox' }, { name: 'Safari' }, { name: 'Ubuntu' }, { name: 'Chrome' }]
-
-  },]
-};
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', context);
 });
 
+router.post('/add', function (req, res, next) {
+  console.log(req.body.id);
+  let id = req.body.id,
+    name = req.body.name;
+  context.table[id].browserList.push({ name: 'aaa' });
+  console.log(context.table[id].browserList);
+
+  res.render('index', context);
+
+});
+router.get('/delete', function (req, res, next) {
+  console.log(req.query.id);
+  let aid = req.query.aid,
+    bid = req.query.bid;
+  context.table[aid].browserList.splice(bid, 1);
+  console.log(context.table[aid].browserList);
+
+  res.render('index', context);
+
+});
 module.exports = router;

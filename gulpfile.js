@@ -42,8 +42,8 @@ gulp.task('build:scripts', () => {
     return gulp.src(scriptsInput)
         .pipe(sourcemaps.init())
         .pipe(babel())
-        .pipe(uglify())
-        .pipe(browserify())
+        // .pipe(uglify())
+        .pipe(browserify({ transform: ['babelify'] }))
         .pipe(concat('main.js'))
         .pipe(rename(path => {
             path.basename += '.min';
