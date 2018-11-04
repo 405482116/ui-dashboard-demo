@@ -12,6 +12,41 @@
     box-sizing: border-box;
 }
 
+@mixin icon-family () {
+    font-family: 'cruise' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin mk-identifier ($url) {
+    background-image: url($url);
+    background-repeat: no-repeat;
+    display: inherit;
+    background-size: contain;
+    min-width: 80px;
+    height: 80px;
+    background-position: center;
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
 /* generate 12 column */
 
 @mixin generate-col ($class-name, $size) {

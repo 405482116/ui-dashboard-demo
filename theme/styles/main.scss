@@ -8,7 +8,14 @@
     @include generate-col(null, $i);
 }
 
-// @media screen and (min-width: $screen-desktop-min) {}
+@media screen and (min-width: $screen-desktop-hd) {
+    .table-row {
+        >i {
+            display: block !important;
+        }
+    }
+}
+
 @media screen and (min-width: $screen-desktop-min) {
     @include mk-col(lg);
     .top-navbar {
@@ -121,19 +128,75 @@ $color in (building, $bg-building),
     $font-size-base: $font-size-base - 2;
 }
 
+.icon-cog {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0;
+    font-size: 10rem;
+    display: block;
+    opacity: .2;
+    animation: round 2s infinite;
+    -webkit-animation: round 2s infinite;
+    /* Safari and Chrome */
+}
+
+.icon-coffee {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0;
+    font-size: 10rem;
+    display: block;
+    opacity: .2;
+}
+
+@include keyframes(round) {
+    from {
+        transform: rotateZ(0deg);
+        -webkit-transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+        -webkit-transform: rotateZ(360deg);
+    }
+}
+
+html {
+    font-size: 62.5%;
+}
+
 body {
     margin: 0;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 .logo {
-    background-image: url(../assets/icons/logo.svg);
-    background-repeat: no-repeat;
-    display: inherit;
-    background-size: contain;
+    @include mk-identifier('../assets/icons/logo.svg');
     min-width: 144px;
     height: 50px;
-    background-position: center;
+}
+
+.icon-cent_os {
+    @include mk-identifier('../assets/icons/cent_os.png');
+}
+
+.icon-debin {
+    @include mk-identifier('../assets/icons/debin.png');
+}
+
+.icon-suse {
+    @include mk-identifier('../assets/icons/suse.png');
+}
+
+.icon-ubuntu {
+    @include mk-identifier('../assets/icons/ubuntu.png');
+}
+
+.icon-windows {
+    @include mk-identifier('../assets/icons/windows.png');
+}
+
+.flex-expand {
+    flex: 1 1 auto;
 }
 
 ul li {
@@ -174,21 +237,13 @@ ul li {
         }
         .search-bar {
             &:before {
+                font-size: 2rem;
                 content: '\f002';
-                font-family: 'cruise' !important;
-                speak: none;
+                @include icon-family();
                 opacity: 0.3;
                 position: absolute;
                 top: 15px;
                 left: 20px;
-                font-style: normal;
-                font-weight: normal;
-                font-variant: normal;
-                text-transform: none;
-                line-height: 1;
-                /* Better Font Rendering =========== */
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
             }
             input {
                 padding: 10px 20px;
@@ -208,6 +263,12 @@ ul li {
         padding: 15px;
         margin: 15px 0;
         position: relative;
+        display: flex;
+        align-items: center;
+        >i {
+            margin-right: 10px;
+            display: none;
+        }
         .bottom {
             margin-top: 15px;
             padding: 0 15px;
@@ -241,5 +302,33 @@ ul li {
         .deny-tool {
             margin-top: 10px;
         }
+    }
+}
+
+.card-container {
+    color: $color-whrite;
+    .title {
+        display: block;
+        padding-top: 10px;
+        padding-left: 10px;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+    .count {
+        display: block;
+        text-align: right;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        font-size: 4.8rem;
+    }
+    .building {
+        background-color: $bg-building;
+    }
+    .idle {
+        background-color: $bg-idle
+    }
+    .overview {
+        color: $color-light-black;
+        background-color: $color-whrite;
     }
 }

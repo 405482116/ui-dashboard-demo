@@ -59,6 +59,5 @@ gulp.task('watch', () => {
 })
 
 gulp.task('default', () => {
-    console.log(dirname)
     runSequence('clean:dist', ['copy:assets', 'build:styles', 'build:scripts'])
 });
