@@ -3,13 +3,15 @@ const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const cssnano = require('gulp-cssnano');
-const browserify = require('gulp-browserify');
 const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
-const concat = require('gulp-concat');
 const clean = require('gulp-clean');
-var runSequence = require('run-sequence');
-// const zip = require('gulp-zip');//todo product need it to package
+const babelify = require('babelify');
+const browserify = require('browserify');
+const buffer = require('vinyl-buffer');
+const source = require('vinyl-source-stream');
+const runSequence = require('run-sequence');
+
 
 const stylesInput = ['./theme/*.scss', './theme/styles/*.scss'];
 const scriptsInput = ['./scripts/*.js', './scripts/*/*.js'];
@@ -39,18 +41,20 @@ gulp.task('build:styles', () => {
 });
 
 gulp.task('build:scripts', () => {
-    return gulp.src(scriptsInput)
-        .pipe(sourcemaps.init())
-        .pipe(babel())
-        // .pipe(uglify())
-        .pipe(browserify({ transform: ['babelify'] }))
-        .pipe(concat('main.js'))
-        .pipe(rename(path => {
-            path.basename += '.min';
+    let b = browserify({
+        entries: "./scripts/main.js",
+        debug: true
+    })
+    return b.transform(babelify)
+        .bundle()
+        .pipe(source('main.min.js'))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({
+            loadMaps: true
         }))
+        .pipe(uglify())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(scriptsOutput));
-
 });
 
 gulp.task('watch', () => {

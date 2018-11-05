@@ -36,6 +36,11 @@
         .sidebar {
             display: none;
         }
+        &.active {
+            .sidebar {
+                display: block;
+            }
+        }
     }
 }
 
@@ -44,6 +49,11 @@
     .container {
         .sidebar {
             display: none;
+        }
+        &.active {
+            .sidebar {
+                display: block;
+            }
         }
         .idle {
             .table-row::before {
