@@ -8,6 +8,10 @@
     "build": "gulp",
     "start": "node app.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/405482116/ui-dashboard-demo"
+  },
   "keywords": [
     "home",
     "works"
