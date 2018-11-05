@@ -4,6 +4,13 @@
     border: transparent;
     background-color: $color-bule;
     cursor: pointer;
+    &-blue {
+        color: $color-whrite;
+        background-color: $color-bule;
+        &:active {
+            background-color: $color-light-blue;
+        }
+    }
     &-whrite {
         background-color: $color-whrite;
     }
@@ -11,6 +18,13 @@
         background-color: $color-light-gray;
         &:active {
             background-color: $color-deep-gray;
+        }
+    }
+    &-light-black {
+        color: $color-whrite;
+        background-color: $color-light-black;
+        &:active {
+            background-color: $color-deep-black;
         }
     }
     >i {

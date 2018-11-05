@@ -25,29 +25,13 @@
         {{> content}}
       </div>
     </section>
+    <footer>
+      {{> footer}}
+    </footer>
   </div>
 
 
   <script src="scripts/main.min.js"></script>
-  <script>
-    let toolTipEle = `<div class="tooltip">
-        <div class="top">
-            <div class="title">Separate multiple resource name with commas</div>
-            <i class="icon-close"></i>
-        </div>
-        <div class="center"><input type="text"></div>
-        <div class="bottom">
-            <button type="button" class="confirm">Add resource</button>
-            <button type="button" class="cancel">Cancel</button>
-        </div>
-    </div>`
-    function addFn(a, b) {
-      console.log(b);
-      var div = document.createElement('div');
-      div.innerHTML = toolTipEle;
-      b.parentNode.append(div);
-    }
-  </script>
 </body>
 
 </html>

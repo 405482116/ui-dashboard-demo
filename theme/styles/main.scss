@@ -4,6 +4,7 @@
 @import '_buttons.scss';
 @import '_badges.scss';
 @import '_layout.scss';
+@import '_tooltips.scss';
 @for $i from 1 through 12 {
     @include generate-col(null, $i);
 }

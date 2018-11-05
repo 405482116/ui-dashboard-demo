@@ -1,0 +1,42 @@
+.tooltip {
+    position: absolute;
+    display: none;
+    padding: 15px;
+    background-color: $color-whrite;
+    max-width: 460px;
+    border: 2px solid $color-bule;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    z-index: 999999;
+    &:before {
+        content: '';
+        border-top: 1px solid $color-bule;
+        border-left: 1px solid $color-bule;
+        position: absolute;
+        background-color: #fff;
+        width: 20px;
+        top: -11px;
+        height: 20px;
+        transform: rotate(45deg);
+    }
+    .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .title {
+            font-size: 1.6rem;
+        }
+        i {
+            font-size: 1.6rem;
+            color: $color-bule;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+    }
+    .center {
+        width: 100%;
+        margin: 20px 0;
+    }
+    input {
+        width: 100%;
+    }
+}
