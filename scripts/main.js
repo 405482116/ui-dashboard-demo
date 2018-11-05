@@ -16,24 +16,29 @@ class Base {
     addFn() {
         postData(`/add`, { id: this._value, name: input.value })
             .then(data => {
+                location.reload();// just test 
                 this.cancelFn();
                 // just test if have time follow up  ie not support fetch
                 console.log(`success:${data}`)
             })
             .catch(error => {
+                location.reload();// just test 
                 // just test if have time follow up ie not support fetch
                 this.cancelFn();
                 console.log(`error:${error}`)
             });
     }
     deleteFn(id, index) {
-        getData(`/delete?aid=${id}&index=${index}`)
+        console.log(id, index);
+        getData(`/delete?id=${id}&index=${index}`)
             .then(data => {
+                location.reload();// just test 
                 // just test if have time follow up
                 this.cancelFn();
                 console.log(`success:${data}`)
             })
             .catch(error => {
+                location.reload();// just test 
                 // just test if have time follow up
                 this.cancelFn();
                 console.log(`error:${error}`)
