@@ -26,7 +26,7 @@ export const postData = (url = ``, data = {}) => {
         referrer: "no-referrer", // no-referrer, *client
         body: JSON.stringify(data), // body data type must match "Content-Type" header
     })
-        .then(response => response); // parses response to JSON
+        .then(response => response.json()); // parses response to JSON
 }
 
 /**
@@ -44,7 +44,7 @@ export const getData = (url = ``) => {
     // Default options are marked with *
     return fetch(url)
         .then(function (response) {
-            return response;
+            return response.json();
         })
         .then(function (myJson) {
             console.log(myJson);

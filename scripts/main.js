@@ -57,6 +57,15 @@ class Base {
     expandSidebar() {
         utils.targetClass(container, 'active');
     }
+    getTable() {
+        getData(`/table`)
+            .then(data => {
+                console.log(`success:${data}`)
+            })
+            .catch(error => {
+                console.log(`error:${error}`)
+            })
+    }
     get value() {
         return this._num;
     }
@@ -67,4 +76,5 @@ class Base {
 }
 window.onload = () => {
     global.$ctrl = new Base();
+    global.$ctrl.getTable();
 }
