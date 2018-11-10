@@ -3,12 +3,10 @@ import {
     postData,
     getData
 } from './http';
-import { renderTableTemplate, renderSideBar, renderCard, renderHistory } from './html';
+import { renderTableTemplate, renderSideBarTemplate, renderCardTemplate, renderHistoryTemplate } from './html';
 import Modal from './modal.compontent';
 
 const container = utils.getEle('.container');
-const tableBody = utils.getEle('.table-body');
-
 const global = window || global;
 
 class Base extends Modal {
@@ -21,9 +19,9 @@ class Base extends Modal {
         //todo   when respone the page should loading~~~~~~~~~
         postData(`/add`, { id: this._value, name: name })
             .then(res => {
-                tableBody.innerHTML = renderTableTemplate(res.data.table);//when the response back render the table row
+                renderTableTemplate(res.data.table);//when the response back render the table row
                 this.initModal();// bind the event to modal compontent
-                renderCard(res.data.table);
+                renderCardTemplate(res.data.table);//when the response back render the card
                 // just test if have time follow up  ie not support fetch
                 console.log(`success:${res}`)
             }).catch(error => {
@@ -35,9 +33,9 @@ class Base extends Modal {
         //todo   when respone the page should loading~~~~~~~~~
         getData(`/delete?id=${id}&index=${index}`)
             .then(res => {
-                tableBody.innerHTML = renderTableTemplate(res.data.table);
+                renderTableTemplate(res.data.table);
                 this.initModal();
-                renderCard(res.data.table);
+                renderCardTemplate(res.data.table);
                 console.log(`success:${res}`)
             }).catch(error => {
                 console.log(`error:${error}`)
@@ -50,10 +48,9 @@ class Base extends Modal {
         //todo   when respone the page should loading~~~~~~~~~
         getData(`/table`)
             .then(res => {
-                console.log(`success:${res}`)
-                tableBody.innerHTML = renderTableTemplate(res.data.table);//when the response back render the table row
+                renderTableTemplate(res.data.table);//when the response back render the table row
+                renderCardTemplate(res.data.table);
                 this.initModal(); // bind the event to modal compontent
-                renderCard(res.data.table);
             }).catch(error => {
                 console.log(`error:${error}`)
             })
@@ -61,9 +58,8 @@ class Base extends Modal {
     initMenu() {
         getData(`/menu`)
             .then(res => {
-                console.log(`success:${res}`)
-                tableBody.innerHTML = renderSideBar(res.data.menu);//when the response back render the table row
-                renderHistory(res.data.history);
+                renderSideBarTemplate(res.data.menu);//call back render the side bar template
+                renderHistoryTemplate(res.data.history);//call back render the history template
             }).catch(error => {
                 console.log(`error:${error}`)
             })

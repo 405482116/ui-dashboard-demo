@@ -2,8 +2,97 @@
 
 import * as utils from './utils';
 
-// use 
+const tableBody = utils.getEle('.table-body');
+const sidebar = utils.getEle('.sidebar');
+
+/**
+ * @description
+ * response call back render the table template 
+ * 
+ * 
+ * @name renderTableTemplate
+ * @type {function}
+ * @param {data} table list Object
+ * @return{document<Object>}
+ */
 export const renderTableTemplate = data => {
+    tableBody.innerHTML = generateTableTemplate(data);
+}
+
+/**
+ * @description
+ * response call back render side bar template 
+ * 
+ * 
+ * @name renderSideBarTemplate
+ * @type {function}
+ * @param {data} menu list Object
+ * @return{document<Object>}
+ */
+export const renderSideBarTemplate = data => {
+    const ul = utils.generateEle('ul');
+    ul.className = 'menu';
+    ul.innerHTML = generateMenuTemplate(data);
+    sidebar.appendChild(ul);
+}
+
+/**
+ * @description
+ * response call back render card template 
+ * 
+ * 
+ * @name renderCardTemplate
+ * @type {function}
+ * @param {data} table list Object
+ * @return{document<Object>}
+ */
+export const renderCardTemplate = data => {
+    const buildingsEle = utils.getEle('.building .count');
+    const idleEle = utils.getEle('.idle .count');
+
+    let buildingsCount = utils.getCounts(data).buildingsCount;
+    let indleCount = utils.getCounts(data).idleCount;
+
+    buildingsEle.innerHTML = buildingsCount;
+    idleEle.innerHTML = indleCount;
+}
+
+/**
+ * @description
+ * response call back render history template 
+ * 
+ * 
+ * @name renderSideBarTemplate
+ * @type {function}
+ * @param {data} menu list Object
+ * @return{document<Object>}
+ */
+export const renderHistoryTemplate = data => {
+    const ul = utils.generateEle('ul');
+    ul.className = 'history';
+    ul.innerHTML = generateHistoryTemplate(data);
+    sidebar.appendChild(ul);
+}
+
+const generateHistoryTemplate = data => {
+    return `
+    <h2>Histroy</h2>
+    ${data.map(item => `
+        <li><a href="#" >${item.lable}<span></li>
+    `).join('')}
+    `
+}
+
+
+const generateMenuTemplate = data => {
+    return data.map(item => `
+    <li>
+        <a href="#" class="height-45 ${item.id === 1 ? `active` : ''}"><i class="${item.icon} font-20"></i>${item.lable}</a>
+    </li>
+    `)
+}
+
+const generateTableTemplate = data => {
     return `
     ${data.map(item =>
             `<div class="${item.type}">
@@ -46,48 +135,5 @@ export const renderTableTemplate = data => {
                 </div>
             </div>`
         ).join('')}
-    `
-}
-export const renderSideBar = data => {
-    const sidebar = utils.getEle('.sidebar');
-    const ul = utils.generateEle('ul');
-    ul.className = 'menu';
-    ul.innerHTML = generateLi(data);
-    sidebar.appendChild(ul);
-}
-
-export const renderCard = data => {
-    const buildingsEle = utils.getEle('.building .count');
-    const idleEle = utils.getEle('.idle .count');
-
-    let buildingsCount = utils.getCounts(data).buildingsCount;
-    let indleCount = utils.getCounts(data).idleCount;
-
-    buildingsEle.innerHTML = buildingsCount;
-    idleEle.innerHTML = indleCount;
-}
-
-const generateLi = data => {
-    return data.map(item => `
-    <li>
-        <a href="#" class="height-45 ${item.id === 1 ? `active` : ''}"><i class="${item.icon} font-20"></i>${item.lable}</a>
-    </li>
-    `)
-}
-
-export const renderHistory = data => {
-    const sidebar = utils.getEle('.sidebar');
-    const ul = utils.generateEle('ul');
-    ul.className = 'history';
-    ul.innerHTML = generateHistory(data);
-    sidebar.appendChild(ul);
-}
-
-const generateHistory = data => {
-    return `
-    <h2>Histroy</h2>
-    ${data.map(item => `
-        <li><a href="#" >${item.lable}<span></li>
-    `).join('')}
     `
 }
