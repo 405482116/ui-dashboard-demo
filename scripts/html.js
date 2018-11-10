@@ -69,7 +69,7 @@ export const renderCard = data => {
 const generateLi = data => {
     return data.map(item => `
     <li>
-        <a href="#" class="height-45"><i class="${item.icon} font-20"></i>${item.label}</a>
+        <a href="#" class="height-45 ${item.id === 1 ? `active` : ''}"><i class="${item.icon} font-20"></i>${item.label}</a>
     </li>
     `)
 }
