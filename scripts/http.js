@@ -8,7 +8,7 @@
  * @name postData
  * @type {function}
  * @param {url} request url
- * @return{Promise>Object}
+ * @return{Promise.<Object>}
  */
 export const postData = (url = ``, data = {}) => {
     // ref fetch MDN
@@ -37,7 +37,7 @@ export const postData = (url = ``, data = {}) => {
  * @name getData
  * @type {function}
  * @param {url} request url
- * @return{Promise>Object}
+ * @return{Promise.<Object>}
  */
 export const getData = (url = ``) => {
     // ref fetch MDN
@@ -46,7 +46,7 @@ export const getData = (url = ``) => {
         .then(function (response) {
             return response.json();
         })
-        .then(function (myJson) {
+        .catch(function (myJson) {
             console.log(myJson);
         });
 }

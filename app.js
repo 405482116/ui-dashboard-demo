@@ -5,6 +5,7 @@ const indexRouter = require('./routes/index');
 const addRouter = require('./routes/add');
 const deleteRouter = require('./routes/delete');
 const tableRouter = require('./routes/table');
+const menuRouter = require('./routes/menu');
 const hbs = require('hbs');
 
 const app = express();
@@ -29,6 +30,7 @@ app.use('/', indexRouter);
 app.use('/', addRouter);
 app.use('/', deleteRouter);
 app.use('/', tableRouter);
+app.use('/', menuRouter);
 
 
 // 404 error

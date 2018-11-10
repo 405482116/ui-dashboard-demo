@@ -24,6 +24,7 @@ const context = {
             }
         ],
     },
+    "index": { "title": "demo", "author": "Jason" },
     "tableData": {
         "table": [
             {
@@ -33,7 +34,7 @@ const context = {
                 "title": "test123.123123.com",
                 "info": "192.168.1.102",
                 "folder": "/var/lib/....",
-                "isDeny": true,
+                "isDeny": false,
                 "browserList": [
                     {
                         "name": "Filefox"
@@ -79,7 +80,7 @@ const context = {
                 "title": "test123.11111.com",
                 "info": "192.168.1.104",
                 "folder": "/var/lib/....",
-                "isDeny": false,
+                "isDeny": true,
                 "browserList": [
                     {
                         "name": "Filefox"
@@ -96,7 +97,7 @@ const context = {
                 "title": "test123.11111.com",
                 "info": "192.168.1.105",
                 "folder": "/var/lib/....",
-                "isDeny": false,
+                "isDeny": true,
                 "browserList": [
                     {
                         "name": "Filefox"
@@ -114,7 +115,14 @@ const context = {
                 "info": "192.168.1.107",
                 "folder": "/var/lib/....",
                 "isDeny": false,
-                "browserList": []
+                "browserList": [
+                    {
+                        "name": "Filefox"
+                    },
+                    {
+                        "name": "Safari"
+                    }
+                ]
             },
             {
                 "id": 5,

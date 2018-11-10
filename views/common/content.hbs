@@ -4,14 +4,14 @@
             <div class="building">
                 <span class="title">Building</span>
                 <i class="icon-cog"></i>
-                <span class="count">3</span>
+                <span class="count"></span>
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="idle">
                 <span class="title">Idle</span>
                 <i class="icon-coffee"></i>
-                <span class="count">5</span>
+                <span class="count"></span>
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12">
@@ -53,48 +53,5 @@
     </div>
 
     <div class="table-body">
-        {{#each table}}
-        <div class="{{type}}">
-            <div class="table-row">
-                <i class="icon-{{class}}"></i>
-                <div class="flex-expand">
-                    <div class="flex-row top flex-row-middle">
-                        <div class="col-lg-4 col-md-4 col-sm-12">
-                            <div class="title">
-                                <i class="icon-desktop font-16"></i><span>{{title}}</span><span class="badges">{{type}}</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12">
-                            <div class="info">
-                                <i class="icon-info font-16"></i><span>{{info}}</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12">
-                            <div class="folder">
-                                <i class="icon-folder font-16"></i><span>{{folder}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex-row bottom flex-row-middle">
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="flex-row flex-row-middle flex-row-between">
-                                <div class="add-tool" onclick="$ctrl.openToolTip({{id}}, event)"><i class="icon-plus font-18"></i></div>
-                                {{#each browserList}}
-                                <div class="delete-tool">
-                                    <button type="button" class="btn btn-light-gray" onclick="$ctrl.deleteFn({{../id}}, {{@index}})">
-                                        <span>{{name}}</span><i class="icon-trash font-16"></i>
-                                    </button>
-                                </div>
-                                {{/each}}
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 row-right">
-                            <div class="deny-tool"><button type="button" class="btn btn-deny"><i class="icon-deny"></i><span>Deny</span></button></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{/each}}
     </div>
 </div>

@@ -15,8 +15,9 @@ router.post('/add', function (req, res, next) {
     console.log(req.body.id);
     let id = req.body.id,
         name = req.body.name;
-    context.table[id].browserList.push({ name: name });
-    console.log(context.table[id].browserList);
+        console.log(id, name);
+    data.data.table[id].browserList.push({ name: name });
+    console.log(data.data.table[id]);
     res.end(JSON.stringify(data));
 
 });

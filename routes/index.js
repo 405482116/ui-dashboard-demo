@@ -5,7 +5,6 @@ const context = require('../db/data');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  console.log(context.indexData)
-  res.render('index', context.indexData);
+  res.render('index', context.index);
 });
 module.exports = router;

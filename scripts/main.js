@@ -3,66 +3,67 @@ import {
     postData,
     getData
 } from './http';
+import { renderTableTemplate, renderSideBar, renderCard } from './html';
+import Modal from './modal.compontent';
 
 const container = utils.getEle('.container');
-const toolTip = utils.getEle('.tooltip');
-const input = utils.getEle('input[name=\'addValue\']');
+const tableBody = utils.getEle('.table-body');
+
 const global = window || global;
 
-class Base {
+class Base extends Modal {
     constructor(value) {
+        super(value);
         this._value = value;
     }
     addFn() {
-        postData(`/add`, { id: this._value, name: input.value })
-            .then(data => {
-                location.reload();// just test 
-                this.cancelFn();
+        let name = document.querySelector('input[name=\'addValue\']').value;
+        //todo   when respone the page should loading~~~~~~~~~
+        postData(`/add`, { id: this._value, name: name })
+            .then(res => {
+                tableBody.innerHTML = renderTableTemplate(res.data.table);//when the response back render the table row
+                this.initModal();// bind the event to modal compontent
+                renderCard(res.data.table);
                 // just test if have time follow up  ie not support fetch
-                console.log(`success:${data}`)
-            })
-            .catch(error => {
-                location.reload();// just test 
+                console.log(`success:${res}`)
+            }).catch(error => {
                 // just test if have time follow up ie not support fetch
-                this.cancelFn();
                 console.log(`error:${error}`)
             });
     }
     deleteFn(id, index) {
-        console.log(id, index);
+        //todo   when respone the page should loading~~~~~~~~~
         getData(`/delete?id=${id}&index=${index}`)
-            .then(data => {
-                location.reload();// just test 
-                // just test if have time follow up
-                this.cancelFn();
-                console.log(`success:${data}`)
-            })
-            .catch(error => {
-                location.reload();// just test 
-                // just test if have time follow up
-                this.cancelFn();
+            .then(res => {
+                tableBody.innerHTML = renderTableTemplate(res.data.table);
+                this.initModal();
+                renderCard(res.data.table);
+                console.log(`success:${res}`)
+            }).catch(error => {
                 console.log(`error:${error}`)
             })
-    }
-    cancelFn() {
-        input.value = '';
-        toolTip.style.display = 'none';
-    }
-    openToolTip(id, e) {
-        this._value = id;
-        toolTip.style.top = `${e.clientY + document.documentElement.scrollTop + 35}px`;
-        toolTip.style.left = `${e.clientX - 40}px`;
-        toolTip.style.display = 'block';
     }
     expandSidebar() {
         utils.targetClass(container, 'active');
     }
-    getTable() {
+    initTable() {
+        //todo   when respone the page should loading~~~~~~~~~
         getData(`/table`)
-            .then(data => {
-                console.log(`success:${data}`)
+            .then(res => {
+                console.log(`success:${res}`)
+                tableBody.innerHTML = renderTableTemplate(res.data.table);//when the response back render the table row
+                this.initModal(); // bind the event to modal compontent
+                renderCard(res.data.table);
+            }).catch(error => {
+                console.log(`error:${error}`)
             })
-            .catch(error => {
+    }
+    initMenu() {
+        getData(`/menu`)
+            .then(res => {
+                console.log(`success:${res}`)
+                tableBody.innerHTML = renderSideBar(res.data.menu);//when the response back render the table row
+            }).catch(error => {
                 console.log(`error:${error}`)
             })
     }
@@ -76,5 +77,6 @@ class Base {
 }
 window.onload = () => {
     global.$ctrl = new Base();
-    global.$ctrl.getTable();
+    global.$ctrl.initMenu();
+    global.$ctrl.initTable();
 }

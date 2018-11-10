@@ -7,11 +7,11 @@ const context = require('../db/data');
 let data = {
     status: '200',
     msg: 'success',
-    data: context.tableData
+    data: context.indexData
 };
 
 // just test if have time follow up
-router.get('/table', function (req, res, next) {
+router.get('/menu', function (req, res, next) {
     res.end(JSON.stringify(data));
 });
 

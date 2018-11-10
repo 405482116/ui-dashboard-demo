@@ -1,12 +1,17 @@
-.tooltip {
+modal {
+    display: block;
+}
+
+.modal {
     position: absolute;
-    display: none;
+    cursor: auto;
     padding: 15px;
     background-color: $color-whrite;
     max-width: 460px;
     border: 2px solid $color-bule;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-    z-index: 999999;
+    color: $color-deep-black;
+    z-index: 99999999;
     &:before {
         content: '';
         border-top: 1px solid $color-bule;
@@ -18,25 +23,26 @@
         height: 20px;
         transform: rotate(45deg);
     }
-    .top {
+    &-heard {
         display: flex;
         justify-content: space-between;
         align-items: center;
         .title {
             font-size: 1.6rem;
+            color: $color-light-black;
         }
-        i {
+        >i {
             font-size: 1.6rem;
             color: $color-bule;
             cursor: pointer;
             margin-left: 20px;
         }
     }
-    .center {
+    &-content {
         width: 100%;
         margin: 20px 0;
-    }
-    input {
-        width: 100%;
+        >input {
+            width: 100%;
+        }
     }
 }

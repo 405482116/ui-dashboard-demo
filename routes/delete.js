@@ -12,11 +12,12 @@ let data = {
 
 // just test if have time follow up
 router.get('/delete', function (req, res, next) {
-    console.log(req.query.id);
+  
     let id = req.query.id,
         index = req.query.index;
-    context.table[id].browserList.splice(index, 1);
-    console.log(context.table[id].browserList);
+        console.log(id, index);
+        data.data.table[id].browserList.splice(index, 1);
+    console.log(data.data.table[id].browserList);
     res.end(JSON.stringify(data));
 });
 

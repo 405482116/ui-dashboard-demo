@@ -4,7 +4,7 @@
 @import '_buttons.scss';
 @import '_badges.scss';
 @import '_layout.scss';
-@import '_tooltips.scss';
+@import '_compontent.scss';
 @for $i from 1 through 12 {
     @include generate-col(null, $i);
 }
@@ -221,6 +221,14 @@ ul li {
     list-style: none;
 }
 
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
 .sidebar {
     ul {
         padding: 0;
@@ -315,7 +323,7 @@ ul li {
             }
         }
         .delete-tool {
-            margin: 10px 0;
+            margin: 10px;
         }
         .deny-tool {
             margin-top: 10px;
@@ -344,6 +352,13 @@ ul li {
     }
     .idle {
         background-color: $bg-idle
+    }
+    .building,
+    .idle {
+        >i {
+            position: relative;
+            top: 20px;
+        }
     }
     .overview {
         position: relative;
