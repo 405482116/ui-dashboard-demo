@@ -3,7 +3,7 @@ import {
     postData,
     getData
 } from './http';
-import { renderTableTemplate, renderSideBar, renderCard } from './html';
+import { renderTableTemplate, renderSideBar, renderCard, renderHistory } from './html';
 import Modal from './modal.compontent';
 
 const container = utils.getEle('.container');
@@ -63,6 +63,7 @@ class Base extends Modal {
             .then(res => {
                 console.log(`success:${res}`)
                 tableBody.innerHTML = renderSideBar(res.data.menu);//when the response back render the table row
+                renderHistory(res.data.history);
             }).catch(error => {
                 console.log(`error:${error}`)
             })

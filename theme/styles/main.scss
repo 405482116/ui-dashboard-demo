@@ -217,10 +217,6 @@ body {
     flex: 1 1 auto;
 }
 
-ul li {
-    list-style: none;
-}
-
 .hide {
     display: none;
 }
@@ -233,13 +229,12 @@ ul li {
     ul {
         padding: 0;
         li {
+            content: ".";
+            color: $color-gray;
             >a {
                 padding: 0 20px;
                 text-decoration: none;
                 color: $color-whrite;
-                height: 45px;
-                display: flex;
-                align-items: center;
                 &.active,
                 &:hover {
                     background-color: $color-light-blue;
@@ -247,6 +242,35 @@ ul li {
                 i {
                     margin-right: 20px;
                 }
+            }
+        }
+    }
+    .menu {
+        li {
+            list-style: none;
+            >a {
+                height: 45px;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+    .history {
+        h2 {
+            color: $color-gray;
+        }
+        margin-top: 30px;
+        margin-left: 20px;
+        li {
+            padding: 5px 0;
+            >a {
+                font-size: 1.2rem;
+                color: $color-gray;
+                padding: 5px 0;
+            }
+            &.active,
+            &:hover {
+                background-color: $color-light-blue;
             }
         }
     }
