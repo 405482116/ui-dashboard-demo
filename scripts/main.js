@@ -9,18 +9,13 @@ import Modal from './modal.compontent';
 const container = utils.getEle('.container');
 const global = window || global;
 
-class Base extends Modal {
-    constructor(value) {
-        super(value);
-        this._value = value;
-    }
-    addFn() {
+class Base {
+    addFn(e) {
         let name = document.querySelector('input[name=\'addValue\']').value;
-        //todo   when respone the page should loading~~~~~~~~~
-        postData(`/add`, { id: this._value, name: name })
+        //TODO:   when respone the page should loading~~~~~~~~~
+        postData(`/add`, { id: e.data, name: name })
             .then(res => {
                 renderTableTemplate(res.data.table);//when the response back render the table row
-                this.initModal();// bind the event to modal compontent
                 renderCardTemplate(res.data.table);//when the response back render the card
                 // just test if have time follow up  ie not support fetch
                 console.log(`success:${res}`)
@@ -30,11 +25,10 @@ class Base extends Modal {
             });
     }
     deleteFn(id, index) {
-        //todo   when respone the page should loading~~~~~~~~~
+        //TODO:   when respone the page should loading~~~~~~~~~
         getData(`/delete?id=${id}&index=${index}`)
             .then(res => {
                 renderTableTemplate(res.data.table);
-                this.initModal();
                 renderCardTemplate(res.data.table);
                 console.log(`success:${res}`)
             }).catch(error => {
@@ -45,12 +39,11 @@ class Base extends Modal {
         utils.targetClass(container, 'active');
     }
     initTable() {
-        //todo   when respone the page should loading~~~~~~~~~
+        //TODO:   when respone the page should loading~~~~~~~~~
         getData(`/table`)
             .then(res => {
                 renderTableTemplate(res.data.table);//when the response back render the table row
                 renderCardTemplate(res.data.table);
-                this.initModal(); // bind the event to modal compontent
             }).catch(error => {
                 console.log(`error:${error}`)
             })
@@ -64,16 +57,16 @@ class Base extends Modal {
                 console.log(`error:${error}`)
             })
     }
-    get value() {
-        return this._num;
-    }
-
-    set value(num) {
-        this._num = num;
-    }
 }
 window.onload = () => {
     global.$ctrl = new Base();
     global.$ctrl.initMenu();
     global.$ctrl.initTable();
+    let modal = new Modal();
+    modal.on('confirm', e => {
+        global.$ctrl.addFn(e)
+    })
+    modal.on('cancel', e => {
+        //TODO:
+    })
 }

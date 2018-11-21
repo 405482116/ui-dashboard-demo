@@ -119,7 +119,7 @@ const generateTableTemplate = data => {
                         <div class="flex-row bottom flex-row-middle">
                             <div class="col-lg-9 col-md-9 col-sm-12">
                                 <div class="flex-row flex-row-middle">
-                                    <modal class="add-tool" data-id="${item.id}" ><i class="icon-plus font-18"></i></modal>
+                                    <modal class="add-tool" data-id="${item.id}" data-options="{titleText : 'Separate multiple resource name with commas'}"><i class="icon-plus font-18"></i></modal>
                                     ${item.browserList.map((subItem, index) => `<div class="delete-tool">
                                         <button type="button" class="btn btn-light-gray" onclick="$ctrl.deleteFn(${item.id}, ${index})">
                                             <span>${subItem.name}</span><i class="icon-trash font-16"></i>
