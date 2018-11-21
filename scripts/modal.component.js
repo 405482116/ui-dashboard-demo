@@ -26,7 +26,7 @@ import * as utils from './utils';
  *                <i class="icon-close iconCloseStyle"></i>
  *            </div>
  *            <div class="modal-content center contentStyle "><input name="addValue" type="text" value=""></div>
- *            <div class="modal-foolter footerStyle">
+ *            <div class="modal-footer footerStyle">
  *                <button type="button" class="wright btn btn-blue btn-confirm confirmBtnStyle">ok</button>
  *                <button type="button" class="wright btn btn-light-black btn-cancel cancelBtnStyle">cancel</button>
  *            </div>
@@ -62,7 +62,7 @@ export default class Modal {
                  <i class="icon-close ${data.iconCloseStyle}"></i>
              </div>
              <div class="modal-content center ${data.contentStyle}">${data.contentText}</div>
-             <div class="modal-foolter ${data.footerStyle}">
+             <div class="modal-footer ${data.footerStyle}">
                  <button type="button" class="wright btn btn-blue btn-confirm ${data.confirmBtnStyle}">${data.confirmBtnText}</button>
                  <button type="button" class="wright btn btn-light-black btn-cancel ${data.cancelBtnStyle}">${data.cancelBtnText}</button>
              </div>

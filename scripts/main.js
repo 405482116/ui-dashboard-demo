@@ -4,7 +4,7 @@ import {
     getData
 } from './http';
 import { renderTableTemplate, renderSideBarTemplate, renderCardTemplate, renderHistoryTemplate } from './html';
-import Modal from './modal.compontent';
+import Modal from './modal.component';
 
 const container = utils.getEle('.container');
 const global = window || global;
@@ -12,7 +12,7 @@ const global = window || global;
 class Base {
     addFn(e) {
         let name = document.querySelector('input[name=\'addValue\']').value;
-        //TODO:   when respone the page should loading~~~~~~~~~
+        //TODO:   when respone the page should loading~~~~~~~~~ 
         postData(`/add`, { id: e.data, name: name })
             .then(res => {
                 renderTableTemplate(res.data.table);//when the response back render the table row
