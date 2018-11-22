@@ -71,9 +71,13 @@ export default class Modal {
         div.innerHTML = str;
         return div.children;
     }
+    _parse(str) {
+      let fn = Function;
+      return new fn(`return ${str}`)();
+    }
     _showModal(modal) {
         let option = modal.getAttribute('data-options') || {};
-        let obj = eval(`(${option})`);
+        let obj = _parse(option);
         let _option = { ...this._defaultOption, ...obj };
         let _modal = this._renderDom(_option)[0];
         _modal.style.top = '50px';
